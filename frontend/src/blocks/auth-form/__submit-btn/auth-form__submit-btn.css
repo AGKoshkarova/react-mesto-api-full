@@ -1,0 +1,47 @@
+.auth-form__submit-btn {
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.auth-form__submit-btn:hover {
+    opacity: 0.8;
+}
+
+@media screen and (min-width: 320px) {
+    .auth-form__submit-btn {
+        min-height: 46px;
+        margin: 225px auto 0;
+        padding: 14px 0;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .auth-form__submit-btn {
+        min-height: 46px;
+        margin: 210px auto 0;
+        padding: 14px 0;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+@media screen and (min-width: 785px) {
+    .auth-form__submit-btn {
+        min-height: 46px;
+        margin: 150px auto 0;
+        padding: 14px 0;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+

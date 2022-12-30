@@ -1,0 +1,23 @@
+.elements {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 568px) {
+    .elements {
+        max-width: 282px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .elements {
+        max-width: 581px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .elements {
+        min-width: 880px;
+    }
+}

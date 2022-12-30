@@ -1,0 +1,7 @@
+.popup__container_type_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 430px;
+    height: 330px;
+}

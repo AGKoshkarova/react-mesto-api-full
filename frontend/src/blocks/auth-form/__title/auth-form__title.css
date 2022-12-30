@@ -1,0 +1,23 @@
+.auth-form__title {
+    color: white;
+    font-weight: 900;
+    text-align: center;
+}
+
+@media screen and (min-width: 320px) {
+    .auth-form__title {
+        max-width: 238px;
+        font-size: 18px;
+        line-height: 22px;
+        margin: 25px auto 50px;
+    }
+}
+
+@media screen and (min-width: 785px) {
+    .auth-form__title {
+        max-width: 330px;
+        font-size: 24px;
+        line-height: 29px;
+        margin: 50px auto;
+    }
+}

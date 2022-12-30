@@ -1,0 +1,27 @@
+.profile__avatar-container {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.profile__avatar-container:hover .profile__avatar-btn {
+    opacity: 1;
+}
+
+
+@media screen and (min-width: 320px) {
+    .profile__avatar-container {
+        margin: 0 0 27px;
+        align-self: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .profile__avatar-container {
+        margin: 0;
+        align-self: unset;
+    }
+}

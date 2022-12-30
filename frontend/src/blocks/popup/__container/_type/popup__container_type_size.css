@@ -1,0 +1,21 @@
+.popup__container_type_size {
+    max-width: 75vw;
+    max-height: 75vh;
+    margin: 0;
+    padding: 0;
+    background-color: unset;
+}
+
+@media screen and (min-width: 320px) {
+    .popup__container_type_size {
+        padding: 0;
+        width: unset;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .popup__container_type_size {
+        padding: 0;
+        width: unset;
+    }
+}

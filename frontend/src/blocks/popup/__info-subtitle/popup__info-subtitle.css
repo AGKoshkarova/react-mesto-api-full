@@ -1,0 +1,9 @@
+.popup__info-subtitle {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 0 auto 60px;
+    color: black;
+}

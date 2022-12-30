@@ -1,0 +1,43 @@
+.profile__avatar-btn {
+    /*width: 26px;
+    height: 26px;
+    background-image: url(../../../images/edit_button.svg);
+    background-size: 100%;
+    background-color:  unset;
+    background-repeat: no-repeat;
+    object-fit: contain;*/
+    outline: none;
+    position: absolute;
+    border: none;
+    object-fit: contain;
+    padding: 0;
+    top: 50px;
+    left: 50px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.profile__avatar-btn::before {
+    content: '';
+    height:120px;
+    position: absolute;
+    width:120px;
+    top: -50px;
+    left: -50px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.profile__avatar-btn::after {
+    width: 26px;
+    height: 26px;
+    background-image: url(../../../images/edit_button.svg);
+    background-size: 100%;
+    background-color:  unset;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
