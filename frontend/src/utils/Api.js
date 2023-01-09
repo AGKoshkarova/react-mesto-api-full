@@ -18,6 +18,7 @@ class Api {
     getUserInformation() {
         return fetch(`${this._url}/users/me`, {
             method: 'GET',
+            credentials: 'include',
             headers: this._headers
         })
         .then(this._checkResponse())
@@ -26,6 +27,7 @@ class Api {
     getAllCards() {
         return fetch(`${this._url}/cards`, {
             method: 'GET',
+            credentials: 'include',
             headers: this._headers
         })
         .then(this._checkResponse())
@@ -34,6 +36,7 @@ class Api {
     changeUserInfo(data) {
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify(data)
         })
@@ -43,6 +46,7 @@ class Api {
     postNewCard(data) {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify(data)
         })
@@ -52,6 +56,7 @@ class Api {
     deleteCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
+            credentials: 'include',
             headers: this._headers
         })
         .then(this._checkResponse())
@@ -60,6 +65,7 @@ class Api {
     putLike(id) {
         return fetch(`${this._url}/cards/${id}/likes`, {
             method: 'PUT',
+            credentials: 'include',
             headers: this._headers
         })
         .then(this._checkResponse())
@@ -67,7 +73,8 @@ class Api {
 
     deleteLike(id) {
         return fetch(`${this._url}/cards/${id}/likes`, {
-            method: 'DELETE', 
+            method: 'DELETE',
+            credentials: 'include',
             headers: this._headers
         })
         .then(this._checkResponse())
@@ -76,6 +83,7 @@ class Api {
     changeAvatar(data) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify(data)
         })
@@ -85,17 +93,16 @@ class Api {
     changeLikeCardStatus(id, action) {
         return fetch(`${this._url}/cards/${id}/likes`, {
             method: `${!action ? 'DELETE' : 'PUT'}`,
+            credentials: 'include',
             headers: this._headers,
-            //body: JSON.stringify()
         })
         .then(this._checkResponse())
         }
     }
 
 export const api = new Api({
-    url: "https://mesto.nomoreparties.co/v1/cohort-50/",
+    url: "https://api.mesto.koshkarova.nomoredomains.club",
     headers: {
         'content-type': 'application/json',
-        authorization: 'e53308b2-3f61-4379-8ee7-a33c421f8fa6'
     }
 })
