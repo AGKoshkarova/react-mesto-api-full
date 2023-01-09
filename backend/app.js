@@ -21,6 +21,7 @@ const allowedCors = [
   'localhost:3000',
   'http://mesto.koshkarova.nomoredomains.club',
   'http://api.mesto.koshkarova.nomoredomains.club',
+  'https://api.mesto.koshkarova.nomoredomains.club',
 ];
 
 const corsOptions = {
