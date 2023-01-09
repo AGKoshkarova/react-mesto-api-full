@@ -33,12 +33,7 @@ export const login = (email, password) => {
 		body: JSON.stringify({ email, password }),
 	})
 		.then((res) => getResponse(res))
-		.then((data) => {
-			if (data) {
-				localStorage.setItem("jwt", data.token);
-				return data;
-			}
-		});
+		.then((data) => data);
 };
 
 //export const checkToken = (token) => {
