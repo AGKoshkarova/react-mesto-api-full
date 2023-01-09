@@ -200,24 +200,37 @@ function App() {
 		}
 	}, [isLoggedIn]);
 
+	React.useEffect(() => {
+		api
+			.getUserInformation()
+			.then((res) => {
+		 		setIsLoggedIn(true);
+		 		setCurrentUser(res);
+		 		setEmail(res.email);
+		 		history.push("/");
+		 })
+		 .catch((err) => console.log(`Ошибка: ${err}`));
+		 }, [isLoggedIn, history]);
+		
+
 	//эффект, вызываемый при монтировании App,
 	//который отправляет запрос checkToken если jwt есть в хранилище
-	React.useEffect(() => {
-		const token = localStorage.getItem("jwt");
-		if (token) {
-			auth
-				.checkToken(token)
-				.then((res) => {
-					setEmail(res.data.email);
-					setIsLoggedIn(true);
-					history.push("/");
-				})
-				.catch((err) => {
-					localStorage.removeItem("jwt");
-					console.log(err);
-				});
-		}
-	}, [history]);
+	//React.useEffect(() => {
+	//	const token = localStorage.getItem("jwt");
+	//	if (token) {
+	//		auth
+	//			.checkToken(token)
+	//			.then((res) => {
+	//				setEmail(res.data.email);
+	//				setIsLoggedIn(true);
+	//				history.push("/");
+	//			})
+	//			.catch((err) => {
+	//				localStorage.removeItem("jwt");
+	//				console.log(err);
+	//			});
+	//	}
+	//}, [history]);
 
 	return (
 		<CurrentUserContext.Provider value={currentUser}>
