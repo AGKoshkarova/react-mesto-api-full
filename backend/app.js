@@ -16,11 +16,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 
 const allowedCors = [
-  'https://praktikum.tk',
-  'http://praktikum.tk',
   'localhost:3000',
-  'http://mesto.koshkarova.nomoredomains.club',
-  'http://api.mesto.koshkarova.nomoredomains.club',
+  'https://mesto.koshkarova.nomoredomains.club',
   'https://api.mesto.koshkarova.nomoredomains.club',
 ];
 
