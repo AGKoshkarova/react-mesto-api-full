@@ -11,6 +11,7 @@ const { MESSAGE_404, url } = require('./utils/constants');
 const { createUser, login } = require('./controllers/users');
 const { checkAuth } = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-err');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 
@@ -38,6 +39,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
+app.use(requestLogger);
+
 app.use(cors(corsOptions));
 
 app.post('/signup', celebrate({
@@ -62,6 +65,8 @@ app.use(checkAuth);
 
 app.use(userRouter);
 app.use(cardRouter);
+
+app.use(errorLogger);
 
 app.use('*', (req, res, next) => {
   next(new NotFoundError(MESSAGE_404));
