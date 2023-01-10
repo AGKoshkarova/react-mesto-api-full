@@ -13,6 +13,8 @@ const NotFoundError = require('../errors/not-found-err');
 const BadRequestError = require('../errors/baq-req-err');
 const EmailError = require('../errors/email-err');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 // запрос на всех пользователей
 module.exports.getUsers = async (req, res, next) => {
   try {
@@ -118,8 +120,8 @@ module.exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findUserByCredentials(email, password);
-    const secretKey = 'my_secret_token_key';
-    const token = jwt.sign({ _id: user._id }, secretKey, { expiresIn: '7d' });
+    // const secretKey = 'my_secret_token_key';
+    const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
     res.cookie('jwt', token, {
       maxAge: 3600000,
       httpOnly: true,

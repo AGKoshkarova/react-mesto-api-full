@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 const { MESSAGE_401 } = require('../utils/constants');
 const AuthorizationError = require('../errors/auth-err');
 
@@ -9,10 +11,10 @@ module.exports.checkAuth = (req, res, next) => {
     return next(new AuthorizationError(MESSAGE_401));
   }
 
-  const secretKey = 'my_secret_token_key';
+  // const secretKey = 'my_secret_token_key';
   let payload;
   try {
-    payload = jwt.verify(token, secretKey);
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
     console.log(err);
     return next(new AuthorizationError(MESSAGE_401));
