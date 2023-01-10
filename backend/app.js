@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-console.log(process.env);
-console.log(process.env.NODE_ENV);
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -44,6 +42,12 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(requestLogger);
 
 app.use(cors(corsOptions));
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
