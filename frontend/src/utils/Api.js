@@ -103,6 +103,6 @@ class Api {
 export const api = new Api({
     url: "https://api.mesto.koshkarova.nomoredomains.club",
     headers: {
-        'Сontent-type': 'application/json',
+        'content-type': 'application/json',
     }
 })
