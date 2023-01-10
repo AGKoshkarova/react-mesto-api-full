@@ -168,7 +168,7 @@ function App() {
 	}
 
 	function handleSignOut(data) {
-		localStorage.removeItem("jwt", data.token);
+		// localStorage.removeItem("jwt", data.token);
 		setIsLoggedIn(false);
 	}
 
@@ -187,18 +187,18 @@ function App() {
 	}, [isLoggedIn]);
 
 	//эффект, устанавливающий пользователя
-	React.useEffect(() => {
-		if (isLoggedIn) {
-			api
-				.getUserInformation()
-				.then((res) => {
-					setCurrentUser(res);
-				})
-				.catch((error) => {
-					console.log(`Ошибка: ${error}`);
-				});
-		}
-	}, [isLoggedIn]);
+	//React.useEffect(() => {
+	//	if (isLoggedIn) {
+	//		api
+	//			.getUserInformation()
+	//			.then((res) => {
+	//				setCurrentUser(res);
+	//			})
+	//			.catch((error) => {
+	//				console.log(`Ошибка: ${error}`);
+	//			});
+	//	}
+	//}, [isLoggedIn]);
 
 	React.useEffect(() => {
 		api
