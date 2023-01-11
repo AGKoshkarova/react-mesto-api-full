@@ -172,20 +172,6 @@ function App() {
 		setIsLoggedIn(false);
 	}
 
-	//отрисовка всех карточек с сервера
-	React.useEffect(() => {
-		if (isLoggedIn) {
-			api
-				.getAllCards()
-				.then((res) => {
-					setCards(res);
-				})
-				.catch((error) => {
-					console.log(`Ошибка: ${error}`);
-				});
-		}
-	}, [isLoggedIn]);
-
 	//эффект, устанавливающий пользователя
 	//React.useEffect(() => {
 	//	if (isLoggedIn) {
@@ -201,17 +187,32 @@ function App() {
 	//}, [isLoggedIn]);
 
 	React.useEffect(() => {
-		api
+		if (isLoggedIn) {
+			api
 			.getUserInformation()
 			.then((res) => {
 		 		setIsLoggedIn(true);
 		 		setCurrentUser(res);
 		 		setEmail(res.email);
 		 		history.push("/");
-		 })
-		 .catch((err) => console.log(`Ошибка: ${err}`));
-		 }, [isLoggedIn, history]);
+		 	})
+		 	.catch((err) => console.log(`Ошибка: ${err}`));
+		 	}
+		}, [isLoggedIn, history]);
 		
+	//отрисовка всех карточек с сервера
+	React.useEffect(() => {
+		if (isLoggedIn) {
+			api
+				.getAllCards()
+				.then((res) => {
+					setCards(res);
+				})
+				.catch((err) => {
+					console.log(`Ошибка: ${err}`);
+				});
+		}
+	}, [isLoggedIn]);
 
 	//эффект, вызываемый при монтировании App,
 	//который отправляет запрос checkToken если jwt есть в хранилище
