@@ -120,7 +120,6 @@ module.exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findUserByCredentials(email, password);
-    // const secretKey = 'my_secret_token_key';
     const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
     res.cookie('jwt', token, {
       maxAge: 3600000,
@@ -141,6 +140,22 @@ module.exports.getUserInformation = async (req, res, next) => {
       return next(new NotFoundError(MESSAGE_404));
     }
     return res.status(STATUS_200).json(user);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+module.exports.logout = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findUserByCredentials(email, password);
+    const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+    res.cookie('jwt', token, {
+      maxAge: -1,
+      httpOnly: true,
+      sameSite: true,
+    });
+    return res.send({ data: user });
   } catch (err) {
     return next(err);
   }

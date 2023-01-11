@@ -47,3 +47,15 @@ export const checkToken = () => {
 		.then((res) => getResponse(res))
 		.then((data) => data);
 };
+
+export const logout = () => {
+	return fetch(`${BASE_URL}/signout`, {
+		method: "POST",
+		credentials: "include",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then((res) => getResponse(res))
+		.then((data) => data);
+};
