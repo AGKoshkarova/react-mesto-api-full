@@ -168,8 +168,16 @@ function App() {
 	}
 
 	function handleSignOut(data) {
-		// localStorage.removeItem("jwt", data.token);
-		setIsLoggedIn(false);
+		auth.checkToken(data)
+		.then((res) => {
+			if (res) {
+				setIsLoggedIn(false);
+				history.push("/signin");
+			}
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 	}
 
 	//эффект, устанавливающий пользователя
@@ -201,11 +209,11 @@ function App() {
 	//валидация токена
 
 	React.useEffect(() => {
-        tokenCheck();
+        findToken();
     }, [isLoggedIn]);
 
-	const tokenCheck = () => {
-        auth.checkToken('проверяем токен')
+	const findToken = () => {
+        auth.checkToken()
             .then((res) => {
             	if(res) {
                 	setIsLoggedIn(true);
