@@ -187,19 +187,17 @@ function App() {
 	//}, [isLoggedIn]);
 
 	React.useEffect(() => {
-		if (isLoggedIn) {
-			api
+		api
 			.getUserInformation()
 			.then((res) => {
-		 		setIsLoggedIn(true);
-		 		setCurrentUser(res);
-		 		setEmail(res.email);
-		 		history.push("/");
-		 	})
-		 	.catch((err) => console.log(`Ошибка: ${err}`));
-		 	}
-		}, [isLoggedIn, history]);
-		
+				setIsLoggedIn(true);
+				setCurrentUser(res);
+				setEmail(res.email);
+				history.push("/");
+			})
+			.catch((err) => console.log(`Ошибка: ${err}`));
+	}, [isLoggedIn, history]);
+
 	//отрисовка всех карточек с сервера
 	React.useEffect(() => {
 		if (isLoggedIn) {
