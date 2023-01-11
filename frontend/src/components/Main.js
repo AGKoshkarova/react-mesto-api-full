@@ -52,7 +52,7 @@ function Main({ onEditProfile, onEditAvatar, cards, onAddPlace, onCardClick, onC
                   name={card.name}
                   link={card.link}
                   likes={card.likes}
-                  card
+                  card={card}
                   onCardClick={onCardClick}
                   onCardLike={onCardLike}
                   onCardDelete={onCardDelete}
