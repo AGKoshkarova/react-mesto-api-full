@@ -42,7 +42,6 @@ export const checkToken = (message) => {
 		credentials: "include",
 		headers: {
 			"Content-Type": "application/json",
-			// Authorization: `Bearer ${token}`,
 		},
 	})
 		.then((res) => getResponse(res, message))
