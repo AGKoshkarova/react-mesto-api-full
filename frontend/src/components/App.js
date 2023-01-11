@@ -198,6 +198,22 @@ function App() {
 			.catch((err) => console.log(`Ошибка: ${err}`));
 	}, [isLoggedIn, history]);
 
+	//валидация токена
+
+	React.useEffect(() => {
+        tokenCheck();
+    }, [isLoggedIn]);
+
+	const tokenCheck = () => {
+        auth.checkToken('проверяем токен')
+            .then((res) => {
+            	if(res) {
+                	setIsLoggedIn(true);
+            	}
+			})
+			.catch((err) => console.log(`Ошибка: ${err}`))
+	}
+
 	//отрисовка всех карточек с сервера
 	React.useEffect(() => {
 		if (isLoggedIn) {
@@ -298,3 +314,4 @@ function App() {
 }
 
 export default App;
+

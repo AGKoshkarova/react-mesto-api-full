@@ -36,15 +36,15 @@ export const login = (email, password) => {
 		.then((data) => data);
 };
 
-//export const checkToken = (token) => {
-//	return fetch(`${BASE_URL}/users/me`, {
-//		method: "GET",
-//		credentials: "include",
-//		headers: {
-//			"Content-Type": "application/json",
-//			Authorization: `Bearer ${token}`,
-//		},
-//	})
-//		.then((res) => getResponse(res))
-//		.then((data) => data);
-//};
+export const checkToken = (message) => {
+	return fetch(`${BASE_URL}/users/me`, {
+		method: "GET",
+		credentials: "include",
+		headers: {
+			"Content-Type": "application/json",
+			// Authorization: `Bearer ${token}`,
+		},
+	})
+		.then((res) => getResponse(res, message))
+		.then((data) => data);
+};
