@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Main(props) {
+function Main({ onEditProfile, onEditAvatar, cards, onAddPlace, onCardClick, onCardDelete, onCardLike }) {
   //подписка на контекст
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -19,7 +19,7 @@ function Main(props) {
             className="profile__avatar-btn"
             type="button"
             aria-label="Редактировать"
-            onClick={props.onEditAvatar}
+            onClick={onEditAvatar}
           />
         </div>
 
@@ -30,7 +30,7 @@ function Main(props) {
               className="profile__edit-btn"
               type="button"
               aria-label="Редактировать"
-              onClick={props.onEditProfile}
+              onClick={onEditProfile}
             />
           </div>
           <p className="profile__description">{currentUser.about}</p>
@@ -39,13 +39,13 @@ function Main(props) {
           className="profile__add-btn"
           type="button"
           aria-label="Добавить"
-          onClick={props.onAddPlace}
+          onClick={onAddPlace}
         />
       </section>
 
       <section className="elements">
         <ul className="elements__container">
-          {props.cards.map((card) => {
+          {cards.map((card) => {
             return (
               <li key={card._id}>
                 <Card
@@ -53,9 +53,9 @@ function Main(props) {
                   link={card.link}
                   likes={card.likes}
                   card={card}
-                  onCardClick={props.onCardClick}
-                  onCardLike={props.onCardLike}
-                  onCardDelete={props.onCardDelete}
+                  onCardClick={onCardClick}
+                  onCardLike={onCardLike}
+                  onCardDelete={onCardDelete}
                 />
               </li>
             );
