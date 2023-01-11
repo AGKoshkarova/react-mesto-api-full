@@ -168,16 +168,11 @@ function App() {
 	}
 
 	function handleSignOut(data) {
-		auth.checkToken(data)
-		.then((res) => {
-			if (res) {
-				setIsLoggedIn(false);
-				history.push("/signin");
-			}
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+		if (data) {
+			setIsLoggedIn(false);
+			setEmail("");
+			setCurrentUser({});
+		}
 	}
 
 	//эффект, устанавливающий пользователя

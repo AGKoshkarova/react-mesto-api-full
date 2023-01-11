@@ -36,7 +36,7 @@ export const login = (email, password) => {
 		.then((data) => data);
 };
 
-export const checkToken = (user) => {
+export const checkToken = () => {
 	return fetch(`${BASE_URL}/users/me`, {
 		method: "GET",
 		credentials: "include",
@@ -44,6 +44,6 @@ export const checkToken = (user) => {
 			"Content-Type": "application/json",
 		},
 	})
-		.then((res) => getResponse(res, user))
+		.then((res) => getResponse(res))
 		.then((data) => data);
 };
