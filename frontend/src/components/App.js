@@ -169,9 +169,11 @@ function App() {
 
 	function handleSignOut({ email, password }) {
 		auth.logout(email, password)
-		.then(() => {
+		.then((res) => {
 			setIsLoggedIn(false);
+			setEmail("");
 			history.push("/signin");
+			console.log(res);
 		})
 		.catch((err) => {
 			console.log(err);
