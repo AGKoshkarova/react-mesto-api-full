@@ -168,7 +168,7 @@ function App() {
 	}
 
 	function handleSignOut() {
-		auth.logout()
+		api.logout()
 		.then(() => {
 			setIsLoggedIn(false);
 		})

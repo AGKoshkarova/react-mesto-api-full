@@ -1,5 +1,7 @@
 //import { data } from "autoprefixer";
 
+import { logout } from "./Auth";
+
 class Api {
     constructor(config) {
         this._url = config.url;
@@ -98,7 +100,17 @@ class Api {
         })
         .then(this._checkResponse())
         }
+    
+
+    logout() {
+        return fetch(`${this._url}/signout`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: this._headers
+        })
+        .then(this._checkResponse())
     }
+}
 
 export const api = new Api({
     url: "https://api.mesto.koshkarova.nomoredomains.club",
