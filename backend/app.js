@@ -72,11 +72,11 @@ app.use(checkAuth);
 app.use(userRouter);
 app.use(cardRouter);
 
-app.use(errorLogger);
-
 app.use('*', (req, res, next) => {
   next(new NotFoundError(MESSAGE_404));
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 

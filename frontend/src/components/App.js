@@ -167,8 +167,8 @@ function App() {
 			});
 	}
 
-	function handleSignOut({ email, password }) {
-		auth.logout(email, password)
+	function handleSignOut(email) {
+		auth.logout(email)
 		.then((res) => {
 			setIsLoggedIn(false);
 			setEmail("");

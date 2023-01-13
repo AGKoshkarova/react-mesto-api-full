@@ -48,14 +48,14 @@ export const checkToken = () => {
 		.then((data) => data);
 };
 
-export const logout = (email, password) => {
+export const logout = (email) => {
 	return fetch(`${BASE_URL}/signout`, {
 		method: "POST",
 		credentials: "include",
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ email, password }),
+		body: JSON.stringify(email),
 	})
 		.then((res) => getResponse(res))
 		.then((data) => data);
