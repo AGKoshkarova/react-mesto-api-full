@@ -3,7 +3,7 @@ import { Route, Link } from "react-router-dom";
 
 function Header(props) {
 	function handleSignOut() {
-		props.onSignOut(props);
+		props.onSignOut();
 	}
 
 	return (

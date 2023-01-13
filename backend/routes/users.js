@@ -7,7 +7,6 @@ const {
   updateProfile,
   updateAvatar,
   getUserInformation,
-  logout,
 } = require('../controllers/users');
 
 const { url } = require('../utils/constants');
@@ -34,12 +33,5 @@ userRouter.patch('/users/me/avatar', celebrate({
     avatar: Joi.string().required().regex(url),
   }),
 }), updateAvatar);
-
-userRouter.post('/signout', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  }),
-}), logout);
 
 module.exports = userRouter;

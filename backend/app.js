@@ -66,6 +66,10 @@ app.post('/signin', celebrate({
   }),
 }), login);
 
+app.get('/signout', (req, res) => {
+  res.clearCookie('jwt').json({ message: 'Куки очищены' });
+});
+
 // защита роутов авторизацией
 app.use(checkAuth);
 

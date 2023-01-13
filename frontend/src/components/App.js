@@ -167,13 +167,10 @@ function App() {
 			});
 	}
 
-	function handleSignOut(email) {
-		auth.logout(email)
-		.then((res) => {
+	function handleSignOut() {
+		auth.logout()
+		.then(() => {
 			setIsLoggedIn(false);
-			setEmail("");
-			history.push("/signin");
-			console.log(res);
 		})
 		.catch((err) => {
 			console.log(err);
